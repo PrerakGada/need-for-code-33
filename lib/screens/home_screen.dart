@@ -19,15 +19,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   var pageController = PageController();
+  List pages = ['Dashboard', 'Calender', 'Notifications', 'Chat'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primary,
+        title: Text(pages[currentIndex]),
       ),
       drawer: MainDrawer(),
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: (int page) {
           setState(() {
@@ -41,9 +44,63 @@ class _HomeScreenState extends State<HomeScreen> {
           MessagesScreen(),
         ],
       ),
-      bottomNavigationBar: BottomBar(
-        selectedIndex: currentIndex,
-        pageController: pageController,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors.primary,
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(size: 30),
+        currentIndex: currentIndex,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (index) {
+          pageController.animateToPage(
+            index,
+            duration: Duration(milliseconds: 200),
+            curve: Curves.linear,
+          );
+        },
+        items: [
+          BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            // backgroundColor: Colors.black,
+            label: 'Home',
+            icon: Icon(
+              Icons.home_outlined,
+              color: Colors.white,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Discover',
+            icon: Icon(
+              Icons.calendar_month_outlined,
+              color: Colors.white,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Notifications',
+            activeIcon: Icon(
+              Icons.notifications,
+              color: Colors.white,
+            ),
+            icon: Icon(
+              Icons.notifications_none,
+              color: Colors.white,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Upload',
+            activeIcon: Icon(
+              Icons.mail,
+              color: Colors.white,
+            ),
+            icon: Icon(
+              Icons.mail_outline,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }
