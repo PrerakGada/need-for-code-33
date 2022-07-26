@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
             scale: _animation,
             child: Image(
               image: AssetImage(
-                'assets/images/img.png',
+                'assets/images/logo.png',
               ),
               height: 280,
               width: 200,
