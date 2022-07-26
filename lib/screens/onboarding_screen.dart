@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/profile_screen.dart';
 
 import '../theme.dart';
@@ -47,28 +48,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: const [
                 OnboardingItem(
                   imageUrl: 'assets/images/img.png',
-                  title: 'See everyday news',
+                  title: 'Study Buddy',
                   description:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
                 ),
                 OnboardingItem(
                   imageUrl: 'assets/images/img.png',
-                  title: 'See everyday news',
+                  title: 'Study Buddy',
                   description:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
                 ),
                 OnboardingItem(
                   imageUrl: 'assets/images/img.png',
-                  title: 'See everyday news',
+                  title: 'Study Buddy',
                   description:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
                 ),
               ],
-              onPageChanged: (int index) {
-                // _currentPageNotifier.value = index;
-
-                print(index);
-              },
             ),
             Positioned(
               // alignment: Alignment.center,
@@ -101,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       onPressed: () {
-                        Navigator.popAndPushNamed(context, ProfileScreen.id);
+                        Navigator.popAndPushNamed(context, DashboardScreen.id);
                       },
                       child: Text(
                         'Get Started',

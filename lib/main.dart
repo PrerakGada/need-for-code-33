@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
+import 'package:studybuddy/screens/messages_screen.dart';
+import 'package:studybuddy/screens/notifications_screen.dart';
 import 'package:studybuddy/screens/splash_screen.dart';
 import 'package:studybuddy/screens/onboarding_screen.dart';
 
 import 'firebase_options.dart';
+import 'screens/calendar_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/profile_screen.dart';
 import 'theme.dart';
@@ -35,6 +38,9 @@ class MyApp extends StatelessWidget {
         ProfileScreen.id: (context) => ProfileScreen(),
         DashboardScreen.id: (context) => DashboardScreen(),
         OnboardingScreen.id: (context) => OnboardingScreen(),
+        MessagesScreen.id: (context) => MessagesScreen(),
+        NotoficationScreen.id: (context) => NotoficationScreen(),
+        CalenderScreen.id: (context) => CalenderScreen(),
       },
     );
   }

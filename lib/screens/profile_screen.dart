@@ -6,7 +6,7 @@ import 'login_screen.dart';
 class ProfileScreen extends StatefulWidget {
   static const String id = 'ProfileScreen';
 
-  // const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -14,6 +14,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             color: AppColors.primary,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, LoginScreen.id);
+            Navigator.pop(context);
           },
         ),
       ),
@@ -148,16 +149,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
         decoration: InputDecoration(
             suffixIcon: isPasswordTextField
                 ? IconButton(
-              onPressed: () {
-                setState(() {
-                  showPassword = !showPassword;
-                });
-              },
-              icon: Icon(
-                Icons.remove_red_eye,
-                color: Colors.grey,
-              ),
-            )
+                    onPressed: () {
+                      setState(() {
+                        showPassword = !showPassword;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.remove_red_eye,
+                      color: Colors.grey,
+                    ),
+                  )
                 : null,
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,

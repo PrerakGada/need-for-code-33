@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studybuddy/theme.dart';
 
 import '../screens/profile_screen.dart';
 
@@ -13,14 +14,14 @@ class MainDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           Container(
-            color: Colors.red,
+            color: AppColors.secondary,
             padding: const EdgeInsets.only(left: 16.0, top: 150),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Citjo User',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  'Prinkal Doshi',
+                  style: TextStyle(color: AppColors.black, fontSize: 20),
                 ),
                 TextButton(
                   onPressed: () {
@@ -28,7 +29,7 @@ class MainDrawer extends StatelessWidget {
                   },
                   child: const Icon(
                     Icons.keyboard_arrow_right,
-                    color: Colors.white,
+                    color: AppColors.black,
                   ),
                 ),
               ],
