@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "395675714464",
+    "project_id": "studybuddy-33",
+    "storage_bucket": "studybuddy-33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395675714464:android:0ff8555b6d44e6b93bdac5",
+        "android_client_info": {
+          "package_name": "com.hackoders.studybuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395675714464-79t943c0nt19vfdhr4fofjc7r59485qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyaxC4PQzw3n9rl2HQAxSo7LqEAN6HEgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395675714464-79t943c0nt19vfdhr4fofjc7r59485qm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
