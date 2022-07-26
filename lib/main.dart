@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/splash_screen.dart';
+import 'package:studybuddy/screens/onboarding_screen.dart';
 
 import 'screens/login_screen.dart';
 import 'screens/profile_screen.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
+      // themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.id,
       routes: {
@@ -26,6 +30,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
         DashboardScreen.id: (context) => DashboardScreen(),
+        OnboardingScreen.id: (context) => OnboardingScreen(),
       },
     );
   }

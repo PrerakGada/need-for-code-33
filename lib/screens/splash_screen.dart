@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:studybuddy/screens/onboarding_screen.dart';
 
 import 'login_screen.dart';
 
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     Timer(
       Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, LoginScreen.id),
+      () => Navigator.pushReplacementNamed(context, OnboardingScreen.id),
     );
   }
 
