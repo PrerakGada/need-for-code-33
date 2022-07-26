@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:studybuddy/models/userModel.dart';
 
 class School {
@@ -40,5 +41,27 @@ class School {
 
     DocumentReference newDocReference = schoolReference.collection("users").doc(userId);
     newDocReference.set(userData, SetOptions(merge: false));
+  }
+
+  Future<void> updateUser(String userId, String userName, String userAddress, String userContact) async {
+    Map<String, String> userData = <String, String>{
+      'user_address': userAddress,
+      'user_name' : userName,
+      'user_contact' : userContact,
+    };
+
+    DocumentReference newDocReference = schoolReference.collection("users").doc(userId);
+    newDocReference.set(userData, SetOptions(merge: true));
+  }
+}
+
+bool isValidSchool(String schoolId){
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  DocumentReference? schoolReference = db.collection("schools").doc(schoolId);
+
+  if (schoolReference != null){
+    return true;
+  } else {
+    return false;
   }
 }
