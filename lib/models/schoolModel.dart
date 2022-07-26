@@ -19,14 +19,12 @@ class School {
     };
     DocumentSnapshot? document = await schoolReference.get();
 
-    if (document != null){
-      Map<String, dynamic> retrievedData = document.data() as Map<String, dynamic>;
-      schoolData = {
-        'schoolAddress' : retrievedData['school_addr'],
-        'schoolName' : retrievedData['school_name'],
-        'schoolContact' : retrievedData['school_contact']
-      };
-    }
+    Map<String, dynamic> retrievedData = document.data() as Map<String, dynamic>;
+    schoolData = {
+      'schoolAddress' : retrievedData['school_addr'],
+      'schoolName' : retrievedData['school_name'],
+      'schoolContact' : retrievedData['school_contact']
+    };
 
     return schoolData;
   }
@@ -53,15 +51,17 @@ class School {
     DocumentReference newDocReference = schoolReference.collection("users").doc(userId);
     newDocReference.set(userData, SetOptions(merge: true));
   }
-}
 
-bool isValidSchool(String schoolId){
-  FirebaseFirestore db = FirebaseFirestore.instance;
-  DocumentReference? schoolReference = db.collection("schools").doc(schoolId);
+  Future<bool> isValidSchool(String schoolId) async {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    DocumentReference? schoolReference = db.collection("schools").doc(schoolId);
 
-  if (schoolReference != null){
-    return true;
-  } else {
-    return false;
+    DocumentSnapshot? schoolSnapshot = await schoolReference.get();
+
+    if (schoolSnapshot != null){
+      return true;
+    } else {
+      return false;
+    }
   }
 }
