@@ -4,7 +4,6 @@ import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/messages_screen.dart';
 import 'package:studybuddy/screens/notifications_screen.dart';
 import 'package:studybuddy/theme.dart';
-import 'package:studybuddy/widgets/bottom_bar.dart';
 import 'package:studybuddy/widgets/main_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
