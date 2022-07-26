@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studybuddy/widgets/main_drawer.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const String id = 'ProfileScreen';
@@ -8,8 +9,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(),
-      body: Text('Hello'),
+      body: Text('Profile'),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:studybuddy/screens/profile_screen.dart';
 
 import '../theme.dart';
 import 'login_screen.dart';
@@ -100,7 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       onPressed: () {
-                        Navigator.popAndPushNamed(context, LoginScreen.id);
+                        Navigator.popAndPushNamed(context, ProfileScreen.id);
                       },
                       child: Text(
                         'Get Started',

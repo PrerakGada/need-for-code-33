@@ -4,12 +4,23 @@ import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/splash_screen.dart';
 import 'package:studybuddy/screens/onboarding_screen.dart';
 
+import 'firebase_options.dart';
 import 'screens/login_screen.dart';
 import 'screens/profile_screen.dart';
+import 'theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+    // options: FirebaseOptions(
+    //   apiKey: "XXX",
+    //   appId: "XXX",
+    //   messagingSenderId: "XXX",
+    //   projectId: "XXX",
+    // ),
+  );
   runApp(const MyApp());
 }
 

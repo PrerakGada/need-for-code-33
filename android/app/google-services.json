@@ -29,6 +29,13 @@
             {
               "client_id": "395675714464-79t943c0nt19vfdhr4fofjc7r59485qm.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "395675714464-89ktn9gqhf11ni8a2s0mfse7509v2o0l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hackoders.studybuddy"
+              }
             }
           ]
         }

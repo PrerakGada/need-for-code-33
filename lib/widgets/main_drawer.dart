@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 
+import '../screens/profile_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -8,7 +8,6 @@ class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-
       // backgroundColor: Colors.blue,
       child: ListView(
         padding: EdgeInsets.zero,
@@ -119,8 +118,8 @@ class DrawerOptionsList extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.popAndPushNamed(
-                                    context, WelcomeScreen.id);
+                                // Navigator.popAndPushNamed(
+                                //     context, WelcomeScreen.id);
                               },
                               child: const Text('Logout'),
                             ),
