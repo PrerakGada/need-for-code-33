@@ -47,22 +47,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               controller: _pageController,
               children: const [
                 OnboardingItem(
-                  imageUrl: 'assets/images/ob1.png',
+                  imageUrl: 'assets/images/img.png',
                   title: 'Study Buddy',
                   description:
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
                 ),
                 OnboardingItem(
-                  imageUrl: 'assets/images/ob2.png',
+                  imageUrl: 'assets/images/img.png',
                   title: 'Study Buddy',
                   description:
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
                 ),
                 OnboardingItem(
-                  imageUrl: 'assets/images/ob3.png',
+                  imageUrl: 'assets/images/img.png',
                   title: 'Study Buddy',
                   description:
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
                 ),
               ],
             ),
@@ -88,7 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(right: 16, left: 16, bottom: 22),
+                    const EdgeInsets.only(right: 16, left: 16, bottom: 22),
                     child: MaterialButton(
                       height: 42,
                       minWidth: MediaQuery.of(context).size.width * 0.9,
@@ -97,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, LoginScreen.id);
+                        Navigator.popAndPushNamed(context, DashboardScreen.id);
                       },
                       child: Text(
                         'Get Started',
@@ -146,10 +146,15 @@ class OnboardingItem extends StatelessWidget {
                 child: Text(
                   title,
                   style: Theme.of(context).textTheme.headlineLarge?.merge(
-                        TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
+                    TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  // style: TextStyle(
+                  //   fontSize: 18,
+                  //   color: Colors.black,
+                  //   fontWeight: FontWeight.w600,
+                  // ),
                 ),
               ),
               Container(

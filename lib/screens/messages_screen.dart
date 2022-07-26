@@ -10,6 +10,11 @@ class MessagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Messages');
+    return Scaffold(
+      drawer: MainDrawer(),
+      appBar: AppBar(),
+      bottomNavigationBar: BottomBar(selectedIndex: 3),
+      body: Text('Messages'),
+    );
   }
 }

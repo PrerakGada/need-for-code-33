@@ -2,7 +2,6 @@ import 'dart:ffi';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:studybuddy/theme.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class MarksChart extends StatefulWidget {
@@ -21,18 +20,21 @@ class _MarksChartState extends State<MarksChart> {
       ChartData('Jack', 34),
       ChartData('Others', 52)
     ];
-    return Container(
-      color: AppColors.primary,
-      height: MediaQuery.of(context).size.width *0.4,
-      width: MediaQuery.of(context).size.width *0.4,
-      child: SfCircularChart(
-        series: <CircularSeries>[
-          // Renders radial bar chart
-          RadialBarSeries<ChartData, String>(
-              dataSource: chartData,
-              xValueMapper: (ChartData data, _) => data.x,
-              yValueMapper: (ChartData data, _) => data.y)
-        ],
+    return Scaffold(
+      body: Center(
+        child: Container(
+          height: 250,
+          width: 250,
+          child: SfCircularChart(
+            series: <CircularSeries>[
+              // Renders radial bar chart
+              RadialBarSeries<ChartData, String>(
+                  dataSource: chartData,
+                  xValueMapper: (ChartData data, _) => data.x,
+                  yValueMapper: (ChartData data, _) => data.y)
+            ],
+          ),
+        ),
       ),
     );
   }

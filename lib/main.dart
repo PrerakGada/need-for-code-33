@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark(),
       // themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      initialRoute: HomeScreen.id,
+      initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         LoginScreen.id: (context) => LoginScreen(),
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         DashboardScreen.id: (context) => DashboardScreen(),
         OnboardingScreen.id: (context) => OnboardingScreen(),
         MessagesScreen.id: (context) => MessagesScreen(),
-        NotificationsScreen.id: (context) => NotificationsScreen(),
+        NotoficationScreen.id: (context) => NotoficationScreen(),
         CalenderScreen.id: (context) => CalenderScreen(),
       },
     );

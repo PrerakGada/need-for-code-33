@@ -8,36 +8,29 @@ import '../screens/notifications_screen.dart';
 
 class BottomBar extends StatelessWidget {
   final int selectedIndex;
-  final PageController pageController;
 
   const BottomBar({
     Key? key,
     required this.selectedIndex,
-    required this.pageController,
   }) : super(key: key);
 
   void onItemTapped(index, context) {
-    pageController.animateToPage(
-      selectedIndex,
-      duration: Duration(milliseconds: 200),
-      curve: Curves.linear,
-    );
-    // switch (index) {
-    //   case 0:
-    //     Navigator.pushReplacementNamed(context, DashboardScreen.id);
-    //     break;
-    //   case 1:
-    //     Navigator.pushReplacementNamed(context, CalenderScreen.id);
-    //     break;
-    //   case 2:
-    //     Navigator.pushReplacementNamed(context, NotificationsScreen.id);
-    //     break;
-    //   case 3:
-    //     Navigator.pushReplacementNamed(context, MessagesScreen.id);
-    //     break;
-    //   default:
-    //     break;
-    // }
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, DashboardScreen.id);
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, CalenderScreen.id);
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, NotoficationScreen.id);
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, MessagesScreen.id);
+        break;
+      default:
+        break;
+    }
   }
 
   @override

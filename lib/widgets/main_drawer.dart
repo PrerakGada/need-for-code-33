@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:studybuddy/screens/login_screen.dart';
 import 'package:studybuddy/theme.dart';
 
 import '../screens/profile_screen.dart';
@@ -10,7 +9,6 @@ class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      // width: 40,
       // backgroundColor: Colors.blue,
       child: ListView(
         padding: EdgeInsets.zero,
@@ -61,42 +59,42 @@ class DrawerOptionsList extends StatelessWidget {
           DrawerOption(
             icon: Icons.language,
             onPressed: () {},
-            title: 'Assignments',
+            title: 'Language',
           ),
           DrawerOption(
             icon: Icons.notifications,
             onPressed: () {},
-            title: 'Attendance',
+            title: 'Notifications',
           ),
           DrawerOption(
             icon: Icons.share,
             onPressed: () {},
-            title: 'Mark Sheet',
+            title: 'Share This App',
           ),
           DrawerOption(
             icon: Icons.feed,
             onPressed: () {},
-            title: 'Tests',
+            title: 'Feedback',
           ),
           DrawerOption(
             icon: Icons.contact_mail_outlined,
             onPressed: () {},
-            title: 'Lectures',
+            title: 'Contact Us',
           ),
           DrawerOption(
             icon: Icons.chat,
             onPressed: () {},
-            title: 'Report Bugs',
+            title: 'Terms and Conditions',
           ),
           DrawerOption(
             icon: Icons.policy,
             onPressed: () {},
-            title: 'Help and Support',
+            title: 'Privacy Policy',
           ),
           DrawerOption(
-            icon: Icons.policy,
+            icon: Icons.verified_sharp,
             onPressed: () {},
-            title: 'FAQs',
+            title: 'Request Blue Tick',
           ),
           DrawerOption(
             icon: Icons.logout,
@@ -121,8 +119,8 @@ class DrawerOptionsList extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.popAndPushNamed(
-                                    context, LoginScreen.id);
+                                // Navigator.popAndPushNamed(
+                                //     context, WelcomeScreen.id);
                               },
                               child: const Text('Logout'),
                             ),
