@@ -10,6 +10,7 @@ import 'screens/profile_screen.dart';
 import 'theme.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
