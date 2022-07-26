@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
+import 'package:studybuddy/screens/home_screen.dart';
 import 'package:studybuddy/screens/messages_screen.dart';
 import 'package:studybuddy/screens/notifications_screen.dart';
 import 'package:studybuddy/screens/splash_screen.dart';
@@ -31,15 +32,16 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark(),
       // themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashScreen.id,
+      initialRoute: HomeScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         LoginScreen.id: (context) => LoginScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
         DashboardScreen.id: (context) => DashboardScreen(),
         OnboardingScreen.id: (context) => OnboardingScreen(),
         MessagesScreen.id: (context) => MessagesScreen(),
-        NotoficationScreen.id: (context) => NotoficationScreen(),
+        NotificationsScreen.id: (context) => NotificationsScreen(),
         CalenderScreen.id: (context) => CalenderScreen(),
       },
     );

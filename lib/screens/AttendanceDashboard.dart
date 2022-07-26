@@ -1,9 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:studybuddy/theme.dart';
 import 'indicator.dart';
 
-class PieChartSample2 extends StatefulWidget {
-  const PieChartSample2({Key? key}) : super(key: key);
+class AttendancePie extends StatefulWidget {
+  const AttendancePie({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => PieChart2State();
@@ -14,68 +15,55 @@ class PieChart2State extends State {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.3,
-      child: Card(
-        color: Colors.white,
-        child: Row(
-          children: <Widget>[
-            const SizedBox(
-              height: 18,
-            ),
-            Expanded(
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: PieChart(
-                  PieChartData(
-                      pieTouchData: PieTouchData(touchCallback:
-                          (FlTouchEvent event, pieTouchResponse) {
-                        setState(() {
-                          if (!event.isInterestedForInteractions ||
-                              pieTouchResponse == null ||
-                              pieTouchResponse.touchedSection == null) {
-                            touchedIndex = -1;
-                            return;
-                          }
-                          touchedIndex = pieTouchResponse
-                              .touchedSection!.touchedSectionIndex;
-                        });
-                      }),
-                      borderData: FlBorderData(
-                        show: false,
-                      ),
-                      sectionsSpace: 0,
-                      centerSpaceRadius: 40,
-                      sections: showingSections()),
-                ),
+    return Column(
+      children: <Widget>[
+        Container(
+          color: AppColors.ternary,
+          height: MediaQuery.of(context).size.width *0.4,
+          width: MediaQuery.of(context).size.width *0.4,
+          child: PieChart(
+            PieChartData(
+              pieTouchData: PieTouchData(
+                touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                  setState(() {
+                    if (!event.isInterestedForInteractions ||
+                        pieTouchResponse == null ||
+                        pieTouchResponse.touchedSection == null) {
+                      touchedIndex = -1;
+                      return;
+                    }
+                    touchedIndex =
+                        pieTouchResponse.touchedSection!.touchedSectionIndex;
+                  });
+                },
               ),
+              // borderData: FlBorderData(
+              //   show: false,
+              // ),
+              sectionsSpace: 0,
+              centerSpaceRadius: 20,
+              sections: showingSections(),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
-                Indicator(
-                  color: Color(0xff0293ee),
-                  text: 'Present',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Indicator(
-                  color: Color(0xfff8b250),
-                  text: 'Absent',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-              ],
+          ),
+        ),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          // mainAxisAlignment: MainAxisAlignment.end,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: const <Widget>[
+            Indicator(
+              color: Color(0xff0293ee),
+              text: 'Present',
+              isSquare: true,
+            ),
+            Indicator(
+              color: Color(0xfff8b250),
+              text: 'Absent',
+              isSquare: true,
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 

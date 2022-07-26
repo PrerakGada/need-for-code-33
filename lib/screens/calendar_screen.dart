@@ -10,11 +10,6 @@ class CalenderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: MainDrawer(),
-      appBar: AppBar(),
-      bottomNavigationBar: BottomBar(selectedIndex: 1),
-      body: Text('Calendar'),
-    );
+    return Text('Calendar');
   }
 }
