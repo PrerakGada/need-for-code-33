@@ -94,6 +94,7 @@ class BottomBar extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+
       ],
     );
   }
