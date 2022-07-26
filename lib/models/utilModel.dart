@@ -7,7 +7,8 @@ Future<bool> isValidSchool(String schoolId) async {
 
   DocumentSnapshot? schoolSnapshot = await schoolReference.get();
 
-  if (schoolSnapshot != null) {
+  print(schoolSnapshot.exists);
+  if (schoolSnapshot.exists) {
     return true;
   } else {
     return false;

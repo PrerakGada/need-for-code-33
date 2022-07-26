@@ -56,8 +56,7 @@ class _SplashScreenState extends State<SplashScreen>
               image: AssetImage(
                 'assets/images/logo.png',
               ),
-              height: 280,
-              width: 200,
+              height: 350,
             ),
           ),
         ),
