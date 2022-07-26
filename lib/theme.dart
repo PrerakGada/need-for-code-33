@@ -30,6 +30,10 @@ abstract class AppTheme {
 
   /// Light theme and its settings.
   static ThemeData light() => ThemeData(
+        appBarTheme: AppBarTheme(
+          color: AppColors.primary,
+          iconTheme: IconThemeData(color: AppColors.white),
+        ),
         brightness: Brightness.light,
         visualDensity: visualDensity,
         textTheme: GoogleFonts.openSansTextTheme(Typography.textTheme)
@@ -42,6 +46,10 @@ abstract class AppTheme {
 
   /// Dark theme and its settings.
   static ThemeData dark() => ThemeData(
+        appBarTheme: AppBarTheme(
+          color: AppColors.primary,
+          iconTheme: IconThemeData(color: AppColors.white),
+        ),
         brightness: Brightness.dark,
         visualDensity: visualDensity,
         textTheme: GoogleFonts.openSansTextTheme(Typography.textTheme).apply(
