@@ -34,10 +34,12 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark(),
       // themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      initialRoute: HomeScreen.id,
+      initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         LoginScreen.id: (context) => LoginScreen(),
+        // LoginOptions.id: (context) => LoginOptions(),
+        // LoginUser.id: (context) => LoginUser(),
         HomeScreen.id: (context) => HomeScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
         DashboardScreen.id: (context) => DashboardScreen(),

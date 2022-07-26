@@ -7,7 +7,7 @@ class User {
   late String schoolId;
 
   User(String schoolID, String userId){
-    schoolId = schoolId;
+    schoolId = schoolID;
     db = FirebaseFirestore.instance;
     userReference = db.collection("schools").doc(schoolId).collection("users").doc(userId);
   }
@@ -28,7 +28,7 @@ class User {
         'userAddress' : retrievedData['user_address'],
         'userName' : retrievedData['user_name'],
         'userContact' : retrievedData['user_contact'],
-        'userRole' : retrievedData['userRole']
+        'userRole' : retrievedData['user_role']
       };
     }
 

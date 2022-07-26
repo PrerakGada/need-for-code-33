@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:studybuddy/models/userModel.dart' as userModel;
 
 class School {
   late FirebaseFirestore db;
   late DocumentReference schoolReference;
+  final FirebaseAuth authInstance = FirebaseAuth.instance;
+  late String schoolID;
 
   School(String schoolId) {
+    schoolID = schoolId;
     db = FirebaseFirestore.instance;
     schoolReference = db.collection("schools").doc(schoolId);
   }
@@ -28,20 +33,53 @@ class School {
     return schoolData;
   }
 
-  Future<String> addUser(String userName, String userAddress,
-      String userContact, String? userRole) async {
-    Map<String, dynamic> userData = <String, dynamic>{
-      'user_address': userAddress,
-      'user_name': userName,
-      'user_contact': userContact,
-      'user_role': userRole ?? 'student'
-    };
+  userModel.User createUser(String userId){
+    return userModel.User(schoolID, userId);
+  }
 
-    final DocumentSnapshot newUserSnapshot = (await schoolReference
-        .collection("users")
-        .add(userData)) as DocumentSnapshot<Object?>;
-    final String newUserID = newUserSnapshot.id;
-    return newUserID;
+  Future<void> signupUser(String userId,
+      String userPassword, String userContact, String userAddress,
+      String userName, [String userRole = 'student']) async {
+      final credentials = await authInstance.createUserWithEmailAndPassword(email: userId, password: userPassword);
+      DocumentReference? newUserDocReference = schoolReference.collection(
+          "pending_users").doc(userId);
+      await newUserDocReference.set({
+        "user_name": userName,
+        "user_contact": userContact,
+        "user_address": userAddress,
+        "user_role": userRole
+      });
+    }
+
+  Future<bool> loginUser(String userId, String userPassword, String userRole) async {
+    userModel.User candidateUser = createUser(userId);
+    Map<String, String?> candidateInfo = await candidateUser.getUserInfo();
+    String candidateRole = candidateInfo['user_role'] ?? 'student';
+    candidateRole = candidateRole.toLowerCase();
+    if (userRole.toLowerCase() != candidateRole){
+      return false;
+    }
+    try {
+      final credentials = await authInstance.signInWithEmailAndPassword(email: userId, password: userPassword);
+    } on FirebaseAuthException catch (err){
+      return false;
+    }
+    return true;
+  }
+
+  Future<void> approveUser(String userId) async {
+    DocumentReference? userDocReference = schoolReference.collection("pending_users").doc(userId);
+    DocumentSnapshot userDocSnapshot = await userDocReference.get();
+
+    DocumentReference? newUserDocReference = schoolReference.collection("users").doc(userId);
+    await newUserDocReference.set({
+      "user_name" : userDocSnapshot["user_name"],
+      "user_contact" : userDocSnapshot["user_contact"],
+      "user_address" : userDocSnapshot["user_address"],
+      "user_role" : userDocSnapshot["user_role"]
+    });
+
+    await userDocReference.delete();
   }
 
   Future<void> updateUser(String userId, String userName, String userAddress,
