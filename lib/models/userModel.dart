@@ -22,7 +22,7 @@ class User {
 
     DocumentSnapshot? document = await userReference.get();
 
-    if (document != null){
+    if (document.exists){
       Map<String, dynamic> retrievedData = document.data() as Map<String, dynamic>;
       userData = {
         'userAddress' : retrievedData['user_address'],
@@ -40,7 +40,7 @@ class User {
 
     DocumentSnapshot? document = await userReference.get();
 
-    if (document != null){
+    if (document.exists){
       Map<String, dynamic> retrievedData = document.data() as Map<String, dynamic>;
       userClassrooms.addAll(retrievedData['user_classrooms']);
     }

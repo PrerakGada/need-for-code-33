@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:studybuddy/models/userModel.dart' as userModel;
+import 'package:studybuddy/models/utilModel.dart';
 
 class School {
   late FirebaseFirestore db;
@@ -22,7 +23,7 @@ class School {
     };
     DocumentSnapshot? document = await schoolReference.get();
 
-    if (document != null) {
+    if (document.exists){
       schoolData = {
         'schoolAddress': document['school_addr'],
         'schoolName': document['school_name'],
@@ -54,7 +55,7 @@ class School {
   Future<bool> loginUser(String userId, String userPassword, String userRole) async {
     userModel.User candidateUser = createUser(userId);
     Map<String, String?> candidateInfo = await candidateUser.getUserInfo();
-    String candidateRole = candidateInfo['user_role'] ?? 'student';
+    String candidateRole = candidateInfo['userRole'] ?? 'student';
     candidateRole = candidateRole.toLowerCase();
     if (userRole.toLowerCase() != candidateRole){
       return false;
@@ -68,8 +69,17 @@ class School {
   }
 
   Future<void> approveUser(String userId) async {
+    bool hasUserApprovePermission = await needsRole(schoolID, 'teacher');
+    if (!hasUserApprovePermission){
+      return;
+    }
+
     DocumentReference? userDocReference = schoolReference.collection("pending_users").doc(userId);
     DocumentSnapshot userDocSnapshot = await userDocReference.get();
+
+    if (!userDocSnapshot.exists){
+      return;
+    }
 
     DocumentReference? newUserDocReference = schoolReference.collection("users").doc(userId);
     await newUserDocReference.set({
@@ -92,6 +102,37 @@ class School {
 
     DocumentReference userReference =
         schoolReference.collection("users").doc(userId);
-    userReference.set(userData);
+    await userReference.set(userData);
+  }
+
+  Future<void> setUserAttendance(String userId, int attendancePercent) async {
+    DocumentReference userDocReference = schoolReference.collection('users').doc(userId);
+    await userDocReference.update({
+      'user_attendance' : attendancePercent
+    });
+  }
+
+  Future<void> addUserToClassroom(String userId, String classroomId) async {
+    DocumentReference classroomReference = schoolReference.collection("classrooms").doc(classroomId);
+    DocumentSnapshot classroomSnapshot = await classroomReference.get();
+
+    List<dynamic> classroomList = classroomSnapshot['classroom_students'];
+    Set classroomSet = classroomList.toSet();
+
+    List newClassroomList = classroomSet.toList();
+    classroomReference.update({
+      'classroom_students' : newClassroomList
+    });
+
+    DocumentReference userReference = schoolReference.collection("users").doc(userId);
+    DocumentSnapshot userSnapshot = await userReference.get();
+
+    List<dynamic> userClassroomList = userSnapshot['user_classrooms'];
+    Set userClassroomSet = userClassroomList.toSet();
+    userClassroomSet.add(userId);
+    List newUserClassrooms = userClassroomSet.toList();
+    await userReference.update({
+      'user_classrooms': newUserClassrooms
+    });
   }
 }
