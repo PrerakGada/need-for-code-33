@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:studybuddy/models/schoolModel.dart';
 
@@ -50,7 +48,7 @@ class User {
     return userClassrooms;
   }
 
-  School getUserSchool(userId){
+  School getUserSchool(){
     return School(schoolId);
   }
 }

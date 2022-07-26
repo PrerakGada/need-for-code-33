@@ -1,67 +1,59 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
-import 'package:studybuddy/models/userModel.dart';
 
 class School {
   late FirebaseFirestore db;
   late DocumentReference schoolReference;
 
-  School(String schoolId){
+  School(String schoolId) {
     db = FirebaseFirestore.instance;
     schoolReference = db.collection("schools").doc(schoolId);
   }
 
   Future<Map<String, String?>> getSchoolData() async {
     Map<String, String?> schoolData = {
-      'schoolAddress' : null,
-      'schoolName' : null,
-      'schoolContact' : null
+      'schoolAddress': null,
+      'schoolName': null,
+      'schoolContact': null
     };
     DocumentSnapshot? document = await schoolReference.get();
 
-    Map<String, dynamic> retrievedData = document.data() as Map<String, dynamic>;
-    schoolData = {
-      'schoolAddress' : retrievedData['school_addr'],
-      'schoolName' : retrievedData['school_name'],
-      'schoolContact' : retrievedData['school_contact']
-    };
+    if (document != null) {
+      schoolData = {
+        'schoolAddress': document['school_addr'],
+        'schoolName': document['school_name'],
+        'schoolContact': document['school_contact']
+      };
+    }
 
     return schoolData;
   }
 
-  Future<void> addUser(String userId, String userName, String userAddress, String userContact, String? userRole) async {
-    Map<String, String> userData = <String, String>{
+  Future<String> addUser(String userName, String userAddress,
+      String userContact, String? userRole) async {
+    Map<String, dynamic> userData = <String, dynamic>{
       'user_address': userAddress,
-      'user_name' : userName,
-      'user_contact' : userContact,
+      'user_name': userName,
+      'user_contact': userContact,
       'user_role': userRole ?? 'student'
     };
 
-    DocumentReference newDocReference = schoolReference.collection("users").doc(userId);
-    newDocReference.set(userData, SetOptions(merge: false));
+    final DocumentSnapshot newUserSnapshot = (await schoolReference
+        .collection("users")
+        .add(userData)) as DocumentSnapshot<Object?>;
+    final String newUserID = newUserSnapshot.id;
+    return newUserID;
   }
 
-  Future<void> updateUser(String userId, String userName, String userAddress, String userContact) async {
-    Map<String, String> userData = <String, String>{
+  Future<void> updateUser(String userId, String userName, String userAddress,
+      String userContact) async {
+    final userData = {
       'user_address': userAddress,
-      'user_name' : userName,
-      'user_contact' : userContact,
+      'user_name': userName,
+      'user_contact': userContact,
     };
 
-    DocumentReference newDocReference = schoolReference.collection("users").doc(userId);
-    newDocReference.set(userData, SetOptions(merge: true));
-  }
-
-  Future<bool> isValidSchool(String schoolId) async {
-    FirebaseFirestore db = FirebaseFirestore.instance;
-    DocumentReference? schoolReference = db.collection("schools").doc(schoolId);
-
-    DocumentSnapshot? schoolSnapshot = await schoolReference.get();
-
-    if (schoolSnapshot != null){
-      return true;
-    } else {
-      return false;
-    }
+    DocumentReference userReference =
+        schoolReference.collection("users").doc(userId);
+    userReference.set(userData);
   }
 }
