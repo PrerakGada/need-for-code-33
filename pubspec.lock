@@ -92,6 +92,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3"
+  expandable:
+    dependency: "direct main"
+    description:
+      name: expandable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -99,6 +106,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  faq:
+    dependency: "direct main"
+    description:
+      name: faq
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
   ffi:
     dependency: transitive
     description:
@@ -226,6 +240,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  list_expandable:
+    dependency: transitive
+    description:
+      name: list_expandable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   lottie:
     dependency: "direct dev"
     description:

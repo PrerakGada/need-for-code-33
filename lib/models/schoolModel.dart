@@ -135,4 +135,23 @@ class School {
       'user_classrooms': newUserClassrooms
     });
   }
+
+  Future<List<Map<String, dynamic>>> getEvents() async {
+    CollectionReference eventReference = schoolReference.collection("events");
+    QuerySnapshot eventSnapshot = await eventReference.get();
+
+    List<Map<String, dynamic>> eventList = [];
+
+    eventSnapshot.docs.forEach((docSnapshot){
+      Map<String, dynamic> preparedData = {
+        'eventID'  : docSnapshot['id'],
+        'startTime': docSnapshot['event_start_time'],
+        'endTime'  : docSnapshot['event_end_time'],
+        'subject'  : docSnapshot['event_subject'],
+        'recurrenceRule' : docSnapshot['event_recurrence_rule']
+      };
+    });
+
+    return eventList;
+  }
 }

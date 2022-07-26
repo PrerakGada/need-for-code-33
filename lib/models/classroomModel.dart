@@ -172,6 +172,7 @@ class Classroom {
 
     await dayAttendanceRef.update(updatedAttendanceData);
   }
+
   School getClassroomSchool() {
     return School(schoolId);
   }
