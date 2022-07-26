@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:studybuddy/screens/faqs.dart';
 import 'package:studybuddy/screens/login_screen.dart';
 import 'package:studybuddy/theme.dart';
 
 import '../screens/profile_screen.dart';
+import '../screens/report_bugs.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -85,7 +87,9 @@ class DrawerOptionsList extends StatelessWidget {
           ),
           DrawerOption(
             icon: Icons.chat,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, ReportBugs.id);
+            },
             title: 'Report Bugs',
           ),
           DrawerOption(
@@ -95,7 +99,9 @@ class DrawerOptionsList extends StatelessWidget {
           ),
           DrawerOption(
             icon: Icons.policy,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context,FAQs.id);
+            },
             title: 'FAQs',
           ),
           DrawerOption(

@@ -4,8 +4,10 @@ import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/home_screen.dart';
 import 'package:studybuddy/screens/messages_screen.dart';
 import 'package:studybuddy/screens/notifications_screen.dart';
+import 'package:studybuddy/screens/report_bugs.dart';
 import 'package:studybuddy/screens/splash_screen.dart';
 import 'package:studybuddy/screens/onboarding_screen.dart';
+import 'package:studybuddy/screens/faqs.dart';
 
 import 'firebase_options.dart';
 import 'screens/calendar_screen.dart';
@@ -43,7 +45,11 @@ class MyApp extends StatelessWidget {
         MessagesScreen.id: (context) => MessagesScreen(),
         NotificationsScreen.id: (context) => NotificationsScreen(),
         CalenderScreen.id: (context) => CalenderScreen(),
+        FAQs.id: (context) => FAQs(),
+        ReportBugs.id: (context) => ReportBugs(),
       },
     );
   }
 }
+
+
