@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:studybuddy/screens/calendar_screen.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/messages_screen.dart';
+import 'package:studybuddy/theme.dart';
 
 import '../screens/notifications_screen.dart';
 
@@ -35,7 +36,7 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.primary,
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(size: 30),
       currentIndex: selectedIndex,
