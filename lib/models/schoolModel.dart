@@ -44,8 +44,13 @@ class School {
       });
     }
 
-  Future<void> loginUser(String userId, String userPassword) async {
-    final credentials = await authInstance.signInWithEmailAndPassword(email: userId, password: userPassword);
+  Future<bool> loginUser(String userId, String userPassword) async {
+    try {
+      final credentials = await authInstance.signInWithEmailAndPassword(email: userId, password: userPassword);
+    } on FirebaseAuthException catch (err){
+      return false;
+    }
+    return true;
   }
 
   Future<void> approveUser(String userId) async {
