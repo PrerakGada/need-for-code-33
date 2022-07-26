@@ -69,7 +69,7 @@ class School {
   }
 
   Future<void> approveUser(String userId) async {
-    bool hasUserApprovePermission = await needsRole(schoolID, 'teacher');
+    bool hasUserApprovePermission = await needsRole(schoolID, 'admin');
     if (!hasUserApprovePermission){
       return;
     }

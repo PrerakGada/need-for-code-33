@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import '../widgets/bottom_bar.dart';
-import '../widgets/main_drawer.dart';
+import 'package:studybuddy/models/schoolModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CalenderScreen extends StatelessWidget {
   static const String id = 'CalenderScreen';
@@ -29,31 +29,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  static const String school_id = '0001';
+  final School school = School(school_id);
+
   @override
   Widget build(BuildContext context) {
-    return SfCalendar(
-      view: CalendarView.week,
-      firstDayOfWeek: 6,
-      dataSource: MeetingDataSource(getAppointments()),
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance.collection("schools").doc(school_id).collection('events').snapshots(),
+      builder: (context, snapshot) {
+        return SfCalendar(
+          view: CalendarView.week,
+          firstDayOfWeek: 6,
+          dataSource: MeetingDataSource(
+              snapshot.hasData ? getAppointments(snapshot.data!) : <
+                  Appointment>[]),
+        );
+      }
     );
   }
 }
 
-List<Appointment> getAppointments() {
+List<Appointment> getAppointments(QuerySnapshot appointmentData) {
   List<Appointment> meetings = <Appointment>[];
-  final DateTime today = DateTime.now();
-  final DateTime startTime =
-      DateTime(today.year, today.month, today.day, 9, 0, 0);
-  final DateTime endTime = startTime.add(const Duration(hours: 2));
-
-  meetings.add(Appointment(
-      startTime: startTime,
-      endTime: endTime,
-      subject: 'Board Meeting',
-      color: Colors.blue,
-      recurrenceRule: 'FREQ=DAILY;COUNT=10',
-      isAllDay: false));
-
+  appointmentData.docs.forEach((doc) {
+    meetings.add(
+      Appointment(
+        startTime: DateTime.fromMillisecondsSinceEpoch(doc['event_start_time']),
+        endTime: DateTime.fromMillisecondsSinceEpoch(doc['event_end_time']),
+        subject: doc['event_subject'],
+        color: Colors.blue,
+        recurrenceRule: doc['event_recurrence_rule'],
+        isAllDay: false
+      )
+    );
+  });
   return meetings;
 }
 
