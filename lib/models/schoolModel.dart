@@ -1,12 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:studybuddy/models/userModel.dart' as userModel;
 
 class School {
   late FirebaseFirestore db;
   late DocumentReference schoolReference;
   final FirebaseAuth authInstance = FirebaseAuth.instance;
+  late String schoolID;
 
   School(String schoolId) {
+    schoolID = schoolId;
     db = FirebaseFirestore.instance;
     schoolReference = db.collection("schools").doc(schoolId);
   }
@@ -30,6 +33,10 @@ class School {
     return schoolData;
   }
 
+  userModel.User createUser(String userId){
+    return userModel.User(schoolID, userId);
+  }
+
   Future<void> signupUser(String userId,
       String userPassword, String userContact, String userAddress,
       String userName, [String userRole = 'student']) async {
@@ -44,7 +51,14 @@ class School {
       });
     }
 
-  Future<bool> loginUser(String userId, String userPassword) async {
+  Future<bool> loginUser(String userId, String userPassword, String userRole) async {
+    userModel.User candidateUser = createUser(userId);
+    Map<String, String?> candidateInfo = await candidateUser.getUserInfo();
+    String candidateRole = candidateInfo['user_role'] ?? 'student';
+    candidateRole = candidateRole.toLowerCase();
+    if (userRole.toLowerCase() != candidateRole){
+      return false;
+    }
     try {
       final credentials = await authInstance.signInWithEmailAndPassword(email: userId, password: userPassword);
     } on FirebaseAuthException catch (err){
