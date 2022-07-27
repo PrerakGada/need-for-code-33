@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Image(
                 fit: BoxFit.contain,
-                image: AssetImage('assets/images/ob1.png'),
+                image: AssetImage('assets/images/school.png'),
                 width: MediaQuery.of(context).size.width,
               ),
             ),
@@ -181,7 +181,7 @@ class LoginOptions extends StatelessWidget {
                           padding: const EdgeInsets.all(33.0),
                           child: Image(
                             fit: BoxFit.contain,
-                            image: AssetImage('assets/images/ob3.png'),
+                            image: AssetImage('assets/images/teacher.png'),
                             width: MediaQuery.of(context).size.width * 0.2,
                           ),
                         ),
@@ -223,7 +223,7 @@ class LoginOptions extends StatelessWidget {
                           padding: const EdgeInsets.all(33.0),
                           child: Image(
                             fit: BoxFit.contain,
-                            image: AssetImage('assets/images/ob2.png'),
+                            image: AssetImage('assets/images/student.png'),
                             width: MediaQuery.of(context).size.width * 0.2,
                           ),
                         ),
@@ -264,7 +264,7 @@ class LoginOptions extends StatelessWidget {
                           padding: const EdgeInsets.all(33.0),
                           child: Image(
                             fit: BoxFit.contain,
-                            image: AssetImage('assets/images/ob1.png'),
+                            image: AssetImage('assets/images/admin.png'),
                             width: MediaQuery.of(context).size.width * 0.2,
                           ),
                         ),
