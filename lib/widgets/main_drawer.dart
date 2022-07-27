@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studybuddy/screens/about_us.dart';
 import 'package:studybuddy/screens/faqs.dart';
 import 'package:studybuddy/screens/login_screen.dart';
 import 'package:studybuddy/theme.dart';
@@ -61,44 +62,46 @@ class DrawerOptionsList extends StatelessWidget {
       child: Column(
         children: [
           DrawerOption(
-            icon: Icons.language,
+            icon: Icons.assignment,
             onPressed: () {},
             title: 'Assignments',
           ),
+          // DrawerOption(
+          //   icon: Icons.notifications,
+          //   onPressed: () {},
+          //   title: 'Attendance',
+          // ),
           DrawerOption(
-            icon: Icons.notifications,
+            icon: Icons.branding_watermark_outlined,
             onPressed: () {},
-            title: 'Attendance',
+            title: 'Marksheet',
           ),
+          // DrawerOption(
+          //   icon: Icons.feed,
+          //   onPressed: () {},
+          //   title: 'Tests',
+          // ),
+          // DrawerOption(
+          //   icon: Icons.contact_mail_outlined,
+          //   onPressed: () {},
+          //   title: 'Lectures',
+          // ),
           DrawerOption(
-            icon: Icons.share,
-            onPressed: () {},
-            title: 'Mark Sheet',
-          ),
-          DrawerOption(
-            icon: Icons.feed,
-            onPressed: () {},
-            title: 'Tests',
-          ),
-          DrawerOption(
-            icon: Icons.contact_mail_outlined,
-            onPressed: () {},
-            title: 'Lectures',
-          ),
-          DrawerOption(
-            icon: Icons.chat,
+            icon: Icons.report,
             onPressed: () {
               Navigator.pushNamed(context, ReportBugs.id);
             },
             title: 'Report Bugs',
           ),
           DrawerOption(
-            icon: Icons.policy,
-            onPressed: () {},
-            title: 'Help and Support',
+            icon: Icons.pending,
+            onPressed: () {
+              Navigator.pushNamed(context, About_Us.id);
+            },
+            title: 'About Us',
           ),
           DrawerOption(
-            icon: Icons.policy,
+            icon: Icons.question_mark,
             onPressed: () {
               Navigator.pushNamed(context,FAQs.id);
             },

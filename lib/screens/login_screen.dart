@@ -390,6 +390,27 @@ class LoginUser extends StatelessWidget {
                     var school = School(id);
                     var isValid = await school.loginUser(email, password, role);
                     if (isValid) {
+                      AlertDialog(
+                        title: const Text('Under Review '),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text('Your Registration is under Review'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(
+                                        context);
+                                  },
+                                  child: const Text('Okay'),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
                       Navigator.of(context).popAndPushNamed(HomeScreen.id);
                     } else {
                       print('Invalid creds');
