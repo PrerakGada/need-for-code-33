@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.primary,
         title: Text(pages[currentIndex]),
       ),
-      drawer: TeacherDrawer(name: 'Prerak Gada'),
+      drawer: TeacherDrawer(),
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
