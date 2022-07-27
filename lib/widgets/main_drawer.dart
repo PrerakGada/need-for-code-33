@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studybuddy/screens/attendance_screen.dart';
 import 'package:studybuddy/screens/faqs.dart';
 import 'package:studybuddy/screens/login_screen.dart';
 import 'package:studybuddy/screens/marksheet_screen.dart';
@@ -97,7 +98,9 @@ class DrawerOptionsList extends StatelessWidget {
           ),
           DrawerOption(
             icon: Icons.notifications,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, AttendanceScreen.id);
+            },
             title: 'Attendance',
           ),
           DrawerOption(
