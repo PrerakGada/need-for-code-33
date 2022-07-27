@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:studybuddy/models/schoolModel.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/home_screen.dart';
+import 'package:studybuddy/screens/onboarding_screen.dart';
 import 'package:studybuddy/theme.dart';
 
 import '../models/utilModel.dart';
+import 'student_home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String id = 'LoginScreen';
@@ -371,6 +373,21 @@ class LoginUser extends StatelessWidget {
                         hintText: '333324',
                       ),
                     ),
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return SignupUser(
+                                role: 'student',
+                                id: id,
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      child: Text('Signup'),
+                    ),
                   ],
                 ),
               ),
@@ -390,7 +407,12 @@ class LoginUser extends StatelessWidget {
                     var school = School(id);
                     var isValid = await school.loginUser(email, password, role);
                     if (isValid) {
-                      Navigator.of(context).popAndPushNamed(HomeScreen.id);
+                      if (role == 'student') {
+                        Navigator.of(context)
+                            .popAndPushNamed(StudentHomeScreen.id);
+                      } else {
+                        Navigator.of(context).popAndPushNamed(HomeScreen.id);
+                      }
                     } else {
                       print('Invalid creds');
                     }
@@ -401,6 +423,189 @@ class LoginUser extends StatelessWidget {
                           TextStyle(color: AppColors.white),
                         ),
                   ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SignupUser extends StatelessWidget {
+  final String id;
+  final String role;
+
+  const SignupUser({Key? key, required this.id, required this.role})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    late String email = '';
+    late String password = '';
+    late String name = '';
+    late String contact = '';
+    late String address = '';
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      backgroundColor: AppColors.white,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Image(
+                fit: BoxFit.contain,
+                image: AssetImage('assets/images/ob1.png'),
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: const EdgeInsets.only(
+                    right: 16, left: 16, top: 24, bottom: 50),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Enter Your Name',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextField(
+                        onChanged: (value) {
+                          name = value;
+                        },
+                        // keyboardType: TextInputType.emailAddress,
+                        // inputFormatters: [FilteringTextInputFormatter.allow()],
+                        decoration: InputDecoration(
+                          hintText: 'Prerak Gada',
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Enter Your Contact',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextField(
+                        onChanged: (value) {
+                          contact = value;
+                        },
+                        // obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: '333324',
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Enter Your Address',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextField(
+                        onChanged: (value) {
+                          address = value;
+                        },
+                        // obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: '333324',
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Enter Your Email',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextField(
+                        onChanged: (value) {
+                          email = value;
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        // obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: '333324',
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Enter Your Password',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextField(
+                        onChanged: (value) {
+                          password = value;
+                        },
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: '333324',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: MaterialButton(
+                height: 42,
+                minWidth: MediaQuery.of(context).size.width * 0.9,
+                color: AppColors.primary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                onPressed: () async {
+                  var school = School(id);
+                  // var isValid = await school.loginUser(email, password, role);
+                  // if (isValid) {
+                  //   Navigator.of(context).popAndPushNamed(HomeScreen.id);
+                  // } else {
+                  //   print('Invalid creds');
+                  // }
+                  school.signupUser(
+                      email, password, contact, address, name, role);
+                  Navigator.of(context).popAndPushNamed(OnboardingScreen.id);
+                },
+                child: Text(
+                  'Sign Up',
+                  style: Theme.of(context).textTheme.headlineLarge?.merge(
+                        TextStyle(color: AppColors.white),
+                      ),
                 ),
               ),
             ),

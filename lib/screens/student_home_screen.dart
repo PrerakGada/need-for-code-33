@@ -6,16 +6,16 @@ import 'package:studybuddy/screens/notifications_screen.dart';
 import 'package:studybuddy/theme.dart';
 import 'package:studybuddy/widgets/main_drawer.dart';
 
-class HomeScreen extends StatefulWidget {
+class StudentHomeScreen extends StatefulWidget {
   static const String id = 'HomeScreen';
 
-  HomeScreen({Key? key}) : super(key: key);
+  StudentHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<StudentHomeScreen> createState() => _StudentHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _StudentHomeScreenState extends State<StudentHomeScreen> {
   int currentIndex = 0;
   var pageController = PageController();
   List pages = ['Dashboard', 'Calender', 'Notifications', 'Chat'];
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.primary,
         title: Text(pages[currentIndex]),
       ),
-      drawer: TeacherDrawer(),
+      drawer: StudentDrawer(),
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
@@ -37,9 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         children: [
-          DashboardScreen(),
+          StudentDashboardScreen(),
           CalenderScreen(),
-          NotificationsScreen(),
+          StudentNotificationsScreen(),
           MessagesScreen(),
         ],
       ),
