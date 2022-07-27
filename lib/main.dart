@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:studybuddy/screens/about_us.dart';
+import 'package:studybuddy/screens/approval.dart';
+import 'package:studybuddy/screens/attendance_screen.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/home_screen.dart';
 import 'package:studybuddy/screens/marksheet_screen.dart';
@@ -9,7 +12,7 @@ import 'package:studybuddy/screens/report_bugs.dart';
 import 'package:studybuddy/screens/splash_screen.dart';
 import 'package:studybuddy/screens/onboarding_screen.dart';
 import 'package:studybuddy/screens/faqs.dart';
-
+import 'package:studybuddy/models/schoolModel.dart';
 import 'firebase_options.dart';
 import 'screens/calendar_screen.dart';
 import 'screens/login_screen.dart';
@@ -52,8 +55,13 @@ class MyApp extends StatelessWidget {
         CalenderScreen.id: (context) => CalenderScreen(),
         FAQs.id: (context) => FAQs(),
         ReportBugs.id: (context) => ReportBugs(),
+        About_Us.id: (context) => About_Us(),
         MarkSheetScreen.id: (context) => MarkSheetScreen(),
+        AttendanceScreen.id: (context) => AttendanceScreen(),
+        Approval.id: (context) => Approval()
       },
     );
   }
 }
+
+

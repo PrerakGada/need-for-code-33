@@ -69,7 +69,7 @@ class School {
   }
 
   Future<void> approveUser(String userId) async {
-    bool hasUserApprovePermission = await needsRole(schoolID, 'admin');
+    bool hasUserApprovePermission = await needsRole(schoolID, 'student');
     if (!hasUserApprovePermission){
       return;
     }
@@ -105,11 +105,33 @@ class School {
     await userReference.set(userData);
   }
 
-  Future<void> setUserAttendance(String userId, int attendancePercent) async {
+  Future<void> setUserAttendance(String userId, String classroomId, int attendancePercent) async {
     DocumentReference userDocReference = schoolReference.collection('users').doc(userId);
-    await userDocReference.update({
-      'user_attendance' : attendancePercent
+    userDocReference.update({"user_attendance.${classroomId}" : attendancePercent});
+
+    DocumentSnapshot attendanceSnapshot = await userDocReference.get();
+    Map<String, dynamic> userAttendance = attendanceSnapshot['user_attendance'];
+    int subjectCount = userAttendance.values.length;
+    double userAggregateAttendance = 0;
+    userAttendance.values.forEach((attendance) {
+      userAggregateAttendance += int.parse(attendance.toString());
     });
+
+    userAggregateAttendance /= subjectCount;
+
+    userDocReference.update({"aggregate_attendance" : userAggregateAttendance});
+
+  }
+
+  Future<List<int>> getUserAttendanceList() async {
+    CollectionReference allUsers = schoolReference.collection("users");
+    QuerySnapshot usersSnapshot = await allUsers.get();
+    List<int> userAttendance = [];
+    usersSnapshot.docs.forEach((doc) {
+      userAttendance.add(doc['aggregate_attendance']);
+    });
+
+    return userAttendance;
   }
 
   Future<void> addUserToClassroom(String userId, String classroomId) async {

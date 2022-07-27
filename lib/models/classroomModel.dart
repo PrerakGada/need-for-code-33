@@ -168,7 +168,7 @@ class Classroom {
     final int userAttendancePercent = userAttendance as int;
 
     School currentSchool = getClassroomSchool();
-    currentSchool.setUserAttendance(userId, userAttendancePercent);
+    currentSchool.setUserAttendance(userId, classroomId, userAttendancePercent);
 
     await dayAttendanceRef.update(updatedAttendanceData);
   }

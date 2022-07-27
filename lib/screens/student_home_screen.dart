@@ -7,7 +7,7 @@ import 'package:studybuddy/theme.dart';
 import 'package:studybuddy/widgets/main_drawer.dart';
 
 class StudentHomeScreen extends StatefulWidget {
-  static const String id = 'HomeScreen';
+  static const String id = 'StudentHomeScreen';
 
   StudentHomeScreen({Key? key}) : super(key: key);
 
