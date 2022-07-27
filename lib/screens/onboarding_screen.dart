@@ -50,19 +50,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   imageUrl: 'assets/images/ob1.png',
                   title: 'Study Buddy',
                   description:
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
+                      'Tracking your studies can help to monitor and support the continuous process of learning. ',
                 ),
                 OnboardingItem(
                   imageUrl: 'assets/images/ob2.png',
                   title: 'Study Buddy',
                   description:
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
+                      'Full implementation of competency based examination, including all processes and monitoring systems',
                 ),
                 OnboardingItem(
                   imageUrl: 'assets/images/ob3.png',
                   title: 'Study Buddy',
                   description:
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elitx.Lorem ipsum dolor sit amet, consectetur adipiscing elitx.',
+                      'A very powerful tool for quality assurance of education.',
                 ),
               ],
             ),

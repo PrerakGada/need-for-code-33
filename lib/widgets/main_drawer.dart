@@ -24,7 +24,11 @@ class TeacherDrawer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
+                  "as"
+                ),
+
+                Text(
                   'Prinkal Doshi',
                   style: TextStyle(color: AppColors.black, fontSize: 20),
                 ),

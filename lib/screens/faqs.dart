@@ -60,10 +60,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Card(
               elevation: 5,
               child: ExpansionTile(
-                title: Text('ExpansionTile 1'),
-                subtitle: Text('Trailing expansion arrow icon'),
+                title: Text('How much time would it take to activate the student registration'),
                 children: <Widget>[
-                  ListTile(title: Text('This is tile number 1',
+                  ListTile(title: Text('within a short while',
                     style: TextStyle(
                         color: AppColors.secondary
                     ),)),
@@ -73,10 +72,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Card(
               elevation: 5,
               child: ExpansionTile(
-                title: Text('ExpansionTile 1'),
-                subtitle: Text('Trailing expansion arrow icon'),
+                title: Text('How reset the Student Registration password'),
                 children: <Widget>[
-                  ListTile(title: Text('This is tile number 1',
+                  ListTile(title: Text('It cannot manually be changed by the student. You have to contact the administration.',
                     style: TextStyle(
                         color: AppColors.secondary
                     ),)),
@@ -86,10 +84,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Card(
               elevation: 5,
               child: ExpansionTile(
-                title: Text('ExpansionTile 1'),
-                subtitle: Text('Trailing expansion arrow icon'),
+                title: Text('How to delete Student Registration Account'),
                 children: <Widget>[
-                  ListTile(title: Text('This is tile number 1',
+                  ListTile(title: Text('Contact Administration',
                     style: TextStyle(
                         color: AppColors.secondary
                     ),)),
@@ -99,10 +96,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Card(
               elevation: 5,
               child: ExpansionTile(
-                title: Text('ExpansionTile 1'),
-                subtitle: Text('Trailing expansion arrow icon'),
+                title: Text('How to edit Student Profile'),
                 children: <Widget>[
-                  ListTile(title: Text('This is tile number 1',
+                  ListTile(title: Text('Login to your account.Go to Dashboard. Click on the left button. click on the > sign and then you can edit your profile',
                     style: TextStyle(
                         color: AppColors.secondary
                     ),)),

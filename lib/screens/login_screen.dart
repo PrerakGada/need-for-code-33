@@ -71,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       decoration: InputDecoration(
-                        hintText: '1234',
+                        hintText: 'School Code',
                       ),
                     ),
                   ],
@@ -178,11 +178,11 @@ class LoginOptions extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(33.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Image(
                             fit: BoxFit.contain,
-                            image: AssetImage('assets/images/teacher.png'),
-                            width: MediaQuery.of(context).size.width * 0.2,
+                            image: AssetImage('assets/images/teachers.png'),
+                            width: MediaQuery.of(context).size.width * 0.8,
                           ),
                         ),
                         Text(
@@ -220,11 +220,11 @@ class LoginOptions extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(33.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Image(
                             fit: BoxFit.contain,
                             image: AssetImage('assets/images/student.png'),
-                            width: MediaQuery.of(context).size.width * 0.2,
+                            width: MediaQuery.of(context).size.width * 0.3,
                           ),
                         ),
                         Text(
@@ -261,11 +261,11 @@ class LoginOptions extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(33.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Image(
                             fit: BoxFit.contain,
                             image: AssetImage('assets/images/admin.png'),
-                            width: MediaQuery.of(context).size.width * 0.2,
+                            width: MediaQuery.of(context).size.width * 0.9,
                           ),
                         ),
                         Text(
@@ -315,7 +315,7 @@ class LoginUser extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Image(
                 fit: BoxFit.contain,
-                image: AssetImage('assets/images/ob1.png'),
+                image: AssetImage('assets/images/student_login.png'),
                 width: MediaQuery.of(context).size.width,
               ),
             ),
@@ -350,7 +350,7 @@ class LoginUser extends StatelessWidget {
                       keyboardType: TextInputType.emailAddress,
                       // inputFormatters: [FilteringTextInputFormatter.allow()],
                       decoration: InputDecoration(
-                        hintText: 'hello@gmail.com',
+                        hintText: 'Student Email',
                       ),
                     ),
                     const Padding(
@@ -370,7 +370,7 @@ class LoginUser extends StatelessWidget {
                       },
                       obscureText: true,
                       decoration: InputDecoration(
-                        hintText: '333324',
+                        hintText: '********',
                       ),
                     ),
                     MaterialButton(
