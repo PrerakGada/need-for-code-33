@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studybuddy/screens/about_us.dart';
+import 'package:studybuddy/screens/approval.dart';
 import 'package:studybuddy/screens/attendance_screen.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/home_screen.dart';
@@ -56,7 +57,8 @@ class MyApp extends StatelessWidget {
         ReportBugs.id: (context) => ReportBugs(),
         About_Us.id: (context) => About_Us(),
         MarkSheetScreen.id: (context) => MarkSheetScreen(),
-        AttendanceScreen.id: (context) => AttendanceScreen()
+        AttendanceScreen.id: (context) => AttendanceScreen(),
+        Approval.id: (context) => Approval()
       },
     );
   }

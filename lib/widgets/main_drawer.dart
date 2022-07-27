@@ -6,6 +6,7 @@ import 'package:studybuddy/screens/marksheet_screen.dart';
 import 'package:studybuddy/theme.dart';
 
 import '../screens/about_us.dart';
+import '../screens/approval.dart';
 import '../screens/profile_screen.dart';
 import '../screens/report_bugs.dart';
 
@@ -95,6 +96,13 @@ class DrawerOptionsList extends StatelessWidget {
             icon: Icons.language,
             onPressed: () {},
             title: 'Assignments',
+          ),
+          DrawerOption(
+            icon: Icons.contact_mail_outlined,
+            onPressed: () {
+              Navigator.pushNamed(context, Approval.id);
+            },
+            title: 'Approvals',
           ),
           DrawerOption(
             icon: Icons.notifications,

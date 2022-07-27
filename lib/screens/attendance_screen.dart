@@ -8,7 +8,7 @@ class AttendanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (
+    return Column(
     children: [
       Padding(
         padding: const EdgeInsets.only(top: 12),
