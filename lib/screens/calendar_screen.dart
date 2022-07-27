@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:studybuddy/models/schoolModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:math';
 
 class CalenderScreen extends StatelessWidget {
   static const String id = 'CalenderScreen';
@@ -35,33 +36,46 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection("schools").doc(school_id).collection('events').snapshots(),
-      builder: (context, snapshot) {
-        return SfCalendar(
-          view: CalendarView.week,
-          firstDayOfWeek: 6,
-          dataSource: MeetingDataSource(
-              snapshot.hasData ? getAppointments(snapshot.data!) : <
-                  Appointment>[]),
-        );
-      }
-    );
+        stream: FirebaseFirestore.instance
+            .collection("schools")
+            .doc(school_id)
+            .collection('events')
+            .snapshots(),
+        builder: (context, snapshot) {
+          return SfCalendar(
+            view: CalendarView.week,
+            firstDayOfWeek: 6,
+            dataSource: MeetingDataSource(snapshot.hasData
+                ? getAppointments(snapshot.data!)
+                : <Appointment>[]),
+          );
+        });
   }
+}
+
+Color generateRandomColor1() {
+  // Define all colors you want here
+  const predefinedColors = [
+    Colors.red,
+    Colors.green,
+    Colors.blue,
+    Colors.yellow,
+    Colors.purple,
+  ];
+  Random random = Random();
+  return predefinedColors[random.nextInt(predefinedColors.length)];
 }
 
 List<Appointment> getAppointments(QuerySnapshot appointmentData) {
   List<Appointment> meetings = <Appointment>[];
   appointmentData.docs.forEach((doc) {
-    meetings.add(
-      Appointment(
+    meetings.add(Appointment(
         startTime: DateTime.fromMillisecondsSinceEpoch(doc['event_start_time']),
         endTime: DateTime.fromMillisecondsSinceEpoch(doc['event_end_time']),
         subject: doc['event_subject'],
-        color: Colors.blue,
+        color: generateRandomColor1(),
         recurrenceRule: doc['event_recurrence_rule'],
-        isAllDay: false
-      )
-    );
+        isAllDay: false));
   });
   return meetings;
 }
