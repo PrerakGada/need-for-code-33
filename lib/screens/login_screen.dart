@@ -7,6 +7,7 @@ import 'package:studybuddy/theme.dart';
 
 import '../models/utilModel.dart';
 import 'onboarding_screen.dart';
+import 'student_home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String id = 'LoginScreen';
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late String code = '0000';
+    late String code = '0001';
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -293,8 +294,8 @@ class LoginUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late String email = '1@1.com';
-    late String password = '000000';
+    late String email = 'teacher@test.com';
+    late String password = '123456';
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -378,7 +379,7 @@ class LoginUser extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (BuildContext context) {
                               return SignupUser(
-                                role: 'student',
+                                role: role,
                                 id: id,
                               );
                             },
@@ -406,28 +407,12 @@ class LoginUser extends StatelessWidget {
                     var school = School(id);
                     var isValid = await school.loginUser(email, password, role);
                     if (isValid) {
-                      AlertDialog(
-                        title: const Text('Under Review '),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text('Your Registration is under Review'),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(
-                                        context);
-                                  },
-                                  child: const Text('Okay'),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      );
-                      Navigator.of(context).popAndPushNamed(HomeScreen.id);
+                      if (role == 'student') {
+                        Navigator.of(context)
+                            .popAndPushNamed(StudentHomeScreen.id);
+                      } else {
+                        Navigator.of(context).popAndPushNamed(HomeScreen.id);
+                      }
                     } else {
                       print('Invalid creds');
                     }
@@ -606,14 +591,29 @@ class SignupUser extends StatelessWidget {
                 ),
                 onPressed: () async {
                   var school = School(id);
-                  // var isValid = await school.loginUser(email, password, role);
-                  // if (isValid) {
-                  //   Navigator.of(context).popAndPushNamed(HomeScreen.id);
-                  // } else {
-                  //   print('Invalid creds');
-                  // }
                   school.signupUser(
                       email, password, contact, address, name, role);
+                  AlertDialog(
+                    title: const Text('Under Review '),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text('Your Registration is under Review'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(
+                                    context);
+                              },
+                              child: const Text('Okay'),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
                   Navigator.of(context).popAndPushNamed(OnboardingScreen.id);
                 },
                 child: Text(

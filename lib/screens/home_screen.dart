@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
+import 'package:studybuddy/models/utilModel.dart';
 import 'package:studybuddy/screens/calendar_screen.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/messages_screen.dart';
@@ -6,9 +8,12 @@ import 'package:studybuddy/screens/notifications_screen.dart';
 import 'package:studybuddy/theme.dart';
 import 'package:studybuddy/widgets/main_drawer.dart';
 
+import '../models/schoolModel.dart';
+
+
 class HomeScreen extends StatefulWidget {
   static const String id = 'HomeScreen';
-
+String? n;
   HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -20,6 +25,16 @@ class _HomeScreenState extends State<HomeScreen> {
   var pageController = PageController();
   List pages = ['Dashboard', 'Calender', 'Notifications', 'Chat'];
 
+  getUser() async {
+    var school = School('0001');
+    var useEmail = await getCurrentUserEmail();
+    var user = school.createUser(useEmail!);
+    var userInfo = await user.getUserInfo();
+    var name = userInfo['userName'];
+    print(await name.runtimeType);
+    return name;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.primary,
         title: Text(pages[currentIndex]),
       ),
-      drawer: TeacherDrawer(),
+      drawer: TeacherDrawer(name: 'Prerak Gada'),
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,

@@ -8,7 +8,8 @@ import '../screens/profile_screen.dart';
 import '../screens/report_bugs.dart';
 
 class TeacherDrawer extends StatelessWidget {
-  const TeacherDrawer({Key? key}) : super(key: key);
+  final String name;
+  const TeacherDrawer({Key? key, required this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,8 @@ class TeacherDrawer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Prinkal Doshi',
+                Text(
+                  name,
                   style: TextStyle(color: AppColors.black, fontSize: 20),
                 ),
                 TextButton(
@@ -210,7 +211,7 @@ class StudentDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Prinkal Doshi',
+                  'Student',
                   style: TextStyle(color: AppColors.black, fontSize: 20),
                 ),
                 TextButton(
