@@ -40,7 +40,7 @@ class School {
 
   Future<void> signupUser(String userId,
       String userPassword, String userContact, String userAddress,
-      String userName, String userRole = 'student') async {
+      String userName, String userRole) async {
       final credentials = await authInstance.createUserWithEmailAndPassword(email: userId, password: userPassword);
       DocumentReference? newUserDocReference = schoolReference.collection(
           "pending_users").doc(userId);
