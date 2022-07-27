@@ -105,11 +105,9 @@ class School {
     await userReference.set(userData);
   }
 
-  Future<void> setUserAttendance(String userId, int attendancePercent) async {
+  Future<void> setUserAttendance(String userId, String classroomId, int attendancePercent) async {
     DocumentReference userDocReference = schoolReference.collection('users').doc(userId);
-    await userDocReference.update({
-      'user_attendance' : attendancePercent
-    });
+    userDocReference.update({"user_attendance.${classroomId}" : attendancePercent});
   }
 
   Future<void> addUserToClassroom(String userId, String classroomId) async {
