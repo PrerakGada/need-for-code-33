@@ -4,7 +4,6 @@ import 'package:studybuddy/models/schoolModel.dart';
 import 'package:studybuddy/screens/dashboard_screen.dart';
 import 'package:studybuddy/screens/home_screen.dart';
 import 'package:studybuddy/theme.dart';
-
 import '../models/utilModel.dart';
 import 'onboarding_screen.dart';
 import 'student_home_screen.dart';
@@ -407,12 +406,27 @@ class LoginUser extends StatelessWidget {
                     var school = School(id);
                     var isValid = await school.loginUser(email, password, role);
                     if (isValid) {
-                      if (role == 'student') {
-                        Navigator.of(context)
-                            .popAndPushNamed(StudentHomeScreen.id);
-                      } else {
-                        Navigator.of(context).popAndPushNamed(HomeScreen.id);
-                      }
+                      AlertDialog(
+                        title: const Text('Under Review '),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text('Your Registration is under Review'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Okay'),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                      Navigator.of(context).popAndPushNamed(HomeScreen.id);
                     } else {
                       print('Invalid creds');
                     }
