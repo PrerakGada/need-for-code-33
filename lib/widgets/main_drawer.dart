@@ -251,7 +251,7 @@ class StudentDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Student',
+                  'Prinkal Doshi',
                   style: TextStyle(color: AppColors.black, fontSize: 20),
                 ),
                 TextButton(
