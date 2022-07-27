@@ -17,16 +17,21 @@ class _MarksChartState extends State<MarksChart> {
       ChartData('David', 25),
       ChartData('Steve', 38),
       ChartData('Jack', 34),
-      ChartData('Others', 52)
+      ChartData('Others', 52),
+      ChartData('Others', 52),
     ];
     return Container(
-      color: AppColors.primary,
-      height: MediaQuery.of(context).size.width *0.4,
-      width: MediaQuery.of(context).size.width *0.4,
+      // color: AppColors.primary,
+      height: MediaQuery.of(context).size.width * 0.45,
+      width: MediaQuery.of(context).size.width * 0.45,
       child: SfCircularChart(
+        borderColor: AppColors.primary,
+        palette: [Colors.black, Colors.blue, Colors.red, Colors.green],
         series: <CircularSeries>[
           // Renders radial bar chart
           RadialBarSeries<ChartData, String>(
+              trackColor: AppColors.greyLight,
+
               dataSource: chartData,
               xValueMapper: (ChartData data, _) => data.x,
               yValueMapper: (ChartData data, _) => data.y)
@@ -38,6 +43,7 @@ class _MarksChartState extends State<MarksChart> {
 
 class ChartData {
   ChartData(this.x, this.y);
+
   final String x;
   final double y;
 }

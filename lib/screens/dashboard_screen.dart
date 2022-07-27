@@ -29,3 +29,28 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 }
+
+class StudentDashboardScreen extends StatelessWidget {
+  static const String id = 'StudentDashboardScreen';
+
+  const StudentDashboardScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MarksChart(),
+              MarksChart(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
