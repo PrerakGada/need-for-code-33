@@ -23,12 +23,11 @@ class User {
     DocumentSnapshot? document = await userReference.get();
 
     if (document.exists){
-      Map<String, dynamic> retrievedData = document.data() as Map<String, dynamic>;
       userData = {
-        'userAddress' : retrievedData['user_address'],
-        'userName' : retrievedData['user_name'],
-        'userContact' : retrievedData['user_contact'],
-        'userRole' : retrievedData['user_role']
+        'userAddress' : document['user_address'],
+        'userName' : document['user_name'],
+        'userContact' : document['user_contact'],
+        'userRole' : document['user_role']
       };
     }
 
