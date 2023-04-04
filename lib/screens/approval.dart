@@ -25,13 +25,13 @@ class Approval extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                RaisedButton.icon(
+                ElevatedButton.icon(
                   onPressed: () {
                     Navigator.pushNamed(context, HomeScreen.id);
                   },
                   icon: Icon(Icons.approval),
                   label: Text('Yes')),
-                RaisedButton.icon(
+                ElevatedButton.icon(
                   onPressed: () {
                       Navigator.pushNamed(context, HomeScreen.id);
                   },

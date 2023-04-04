@@ -54,9 +54,9 @@ class _ReportBugsState extends State<ReportBugs> {
                   ),
                 ),
               ),
-              RaisedButton(
-                textColor: Colors.white,
-                color: Colors.blue,
+              ElevatedButton(
+                // textColor: Colors.white,
+                // color: Colors.blue,
                 child: Text('Submit'),
                 onPressed: () {
                   showDialog(

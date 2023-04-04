@@ -118,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             letterSpacing: 2.2,
                             color: Colors.black)),
                   ),
-                  RaisedButton(
+                  MaterialButton(
                     onPressed: () {},
                     color: AppColors.primary,
                     padding: EdgeInsets.symmetric(horizontal: 50),
